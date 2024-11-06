@@ -127,39 +127,39 @@ public class TestTaskFour extends AbstractTest {
     /*
     * Verifies that HomeController.processAddJobForm queries skillRepository and sets skills properly
     * */
-//    @Test
-//    public void testProcessAddJobFormHandlesSkillsProperly (
-//            @Mocked SkillRepository skillRepository,
-//            @Mocked EmployerRepository employerRepository,
-//            @Mocked JobRepository jobRepository,
-//            @Mocked Job job,
-//            @Mocked Errors errors)
-//            throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException, IllegalAccessException, InvocationTargetException {
-//        Class homeControllerClass = getClassByName("controllers.HomeController");
-//        Method processAddJobFormMethod = homeControllerClass.getMethod("processAddJobForm", Job.class, Errors.class, Model.class, int.class, List.class);
-//
-//        new Expectations() {{
-//            skillRepository.findAllById((Iterable<Integer>) any);
-//            job.setSkills((List<Skill>) any);
-//        }};
-//
-//        Model model = new ExtendedModelMap();
-//        HomeController homeController = new HomeController();
-//
-//        Field skillRepositoryField = homeControllerClass.getDeclaredField("skillRepository");
-//        skillRepositoryField.setAccessible(true);
-//        skillRepositoryField.set(homeController, skillRepository);
-//
-//        Field employerRepositoryField = homeControllerClass.getDeclaredField("employerRepository");
-//        employerRepositoryField.setAccessible(true);
-//        employerRepositoryField.set(homeController, employerRepository);
-//
-//        Field jobRepositoryField = homeControllerClass.getDeclaredField("jobRepository");
-//        jobRepositoryField.setAccessible(true);
-//        jobRepositoryField.set(homeController, jobRepository);
-//
-//        processAddJobFormMethod.invoke(homeController, job, errors, model, 0, new ArrayList<Skill>());
-//    }
+    @Test
+    public void testProcessAddJobFormHandlesSkillsProperly (
+            @Mocked SkillRepository skillRepository,
+            @Mocked EmployerRepository employerRepository,
+            @Mocked JobRepository jobRepository,
+            @Mocked Job job,
+            @Mocked Errors errors)
+            throws ClassNotFoundException, NoSuchMethodException, NoSuchFieldException, IllegalAccessException, InvocationTargetException {
+        Class homeControllerClass = getClassByName("controllers.HomeController");
+        Method processAddJobFormMethod = homeControllerClass.getMethod("processAddJobForm", Job.class, Errors.class, Model.class, int.class, List.class);
+
+        new Expectations() {{
+            skillRepository.findAllById((Iterable<Integer>) any);
+            job.setSkills((List<Skill>) any);
+        }};
+
+        Model model = new ExtendedModelMap();
+        HomeController homeController = new HomeController();
+
+        Field skillRepositoryField = homeControllerClass.getDeclaredField("skillRepository");
+        skillRepositoryField.setAccessible(true);
+        skillRepositoryField.set(homeController, skillRepository);
+
+        Field employerRepositoryField = homeControllerClass.getDeclaredField("employerRepository");
+        employerRepositoryField.setAccessible(true);
+        employerRepositoryField.set(homeController, employerRepository);
+
+        Field jobRepositoryField = homeControllerClass.getDeclaredField("jobRepository");
+        jobRepositoryField.setAccessible(true);
+        jobRepositoryField.set(homeController, jobRepository);
+
+        processAddJobFormMethod.invoke(homeController, job, errors, model, 0, new ArrayList<Skill>());
+    }
 
     /*
     * Verifies that skillRepository and employerRepository fields have been added to ListController
